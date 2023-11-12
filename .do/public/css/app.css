@@ -1,0 +1,10 @@
+#customer-carousel {
+    /* background-color: grey; */
+    /* width: 80vw; */
+    height: 400px;
+    margin: 10px;
+    background-image: url("/images/9-scaled-1.jpg");
+}
+#customer-carousel img{
+    height: 400px;
+}
