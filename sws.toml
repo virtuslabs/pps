@@ -1,0 +1,25 @@
+[general]
+
+#### Address & Root dir
+host = "::"
+port = 8000
+root = "./"
+
+#### Logging
+log-level = "debug"
+
+[advanced]
+
+### URL Rewrites
+
+# a. Simple route rewrite example
+[[advanced.rewrites]]
+source = "/wp-content/plugins"
+destination = "/js"
+
+[[advanced.headers]]
+source = "**/*.{js,css}"
+
+[advanced.headers.headers]
+Pragma = "no-cache"
+Cache-Control = "no-store, must-revalidate"
