@@ -3,7 +3,7 @@
 #### Address & Root dir
 host = "::"
 port = 8000
-root = "./"
+root = "./public"
 
 #### Logging
 log-level = "debug"
