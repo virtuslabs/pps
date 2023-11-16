@@ -1,16 +1,15 @@
-window.onload = async () => {
-    let currentYear = new Date().getFullYear()
-    document.getElementById("copyright-year").innerText = currentYear.toString()
-    let path = window.location.pathname
-    if(path.includes("projects.html")){
-        console.log(path)
+function loadProjects(){
+    // let path = window.location.pathname
+    // if(path.includes("projects.html")){
+        // console.log(path)
         let gallery = document.getElementById("gallery")
         let galleryCarousel = document.getElementById("gallery-carousel")
         let inner = galleryCarousel.querySelector("div")
         // let inner = projectsCarousel.querySelector("div")
-        let res = await fetch("/manifest.json")
-        if(res.ok){
-            let manifest = await res.json()
+        fetch("/manifest.json")
+        .then(res => res.json())
+        .then(manifest => {
+            // let manifest = data.json()
             let images = manifest["images"]
             for(let i=0;i<images.length;i++){
                 let item = document.createElement("div")
@@ -19,6 +18,8 @@ window.onload = async () => {
                 item.classList.add("col-lg-3")
                 let imageElm = document.createElement("img")
                 imageElm.classList.add("w-100")
+                imageElm.classList.add("mt-4")
+                imageElm.classList.add("img-fluid")
                 imageElm.src = images[i]
                 imageElm.setAttribute("data-bs-target", "#gallery-carousel")
                 imageElm.setAttribute("data-bs-slide", i)
@@ -36,6 +37,13 @@ window.onload = async () => {
                 }
                 inner.appendChild(carouselItem)
             }
-        }
-    }
+            htmx.process(gallery)
+            htmx.process(galleryCarousel)
+        })
+    // }
+}
+window.onload = async () => {
+    let currentYear = new Date().getFullYear()
+    document.getElementById("copyright-year").innerText = currentYear.toString()
+    
 }

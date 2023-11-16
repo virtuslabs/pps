@@ -8,3 +8,47 @@
 #customer-carousel img{
     height: 400px;
 }
+
+/* Crop thumbnail images. */
+#gallery {
+  img {
+    height: 75vw;
+    object-fit: cover;
+    
+    @media (min-width: 576px) {
+      height: 35vw;
+    }
+    
+    @media (min-width: 992px) {
+      height: 18vw;
+    }
+  }
+}
+
+ /* Crop images in the carousel */
+.carousel-item {
+  img {
+    height: 60vw;
+    object-fit: cover;
+    
+    @media (min-width: 576px) {
+      height: 350px;
+    }
+    @media (min-width: 768px) {
+        height: 500px;
+      }
+    @media (min-width: 992px) {
+        height: 650px;
+      }
+    @media (min-width: 1200px) {
+        height: 750px;
+      }
+  }
+}
+
+.modal-dialog {
+    height: 90%; /* = 90% of the .modal-backdrop block = %90 of the screen */
+  }
+  .modal-content {
+    height: 100%; /* = 100% of the .modal-dialog block */
+  }
