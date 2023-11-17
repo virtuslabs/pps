@@ -42,8 +42,29 @@ function loadProjects(){
         })
     // }
 }
+function loadMap(){
+    var map = L.map("map").setView([34.501876, -82.016902], 13);
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
+    var popup = L.popup()
+    .setLatLng([34.501876, -82.016902])
+    .setContent("Laurens, SC 29360")
+    .openOn(map);
+}
+// https://maps.google.com/maps?ll=34.501876,-82.016902&z=14&t=m&hl=en-US&gl=US&mapclient=embed&q=Laurens%20South%20Carolina%2029360
 window.onload = async () => {
     let currentYear = new Date().getFullYear()
     document.getElementById("copyright-year").innerText = currentYear.toString()
     
 }
+
+htmx.on("htmx:load", function(evt) {
+    console.log(evt)
+    if (evt.target.id === "gallery-modal"){
+        loadProjects()
+    } else if (evt.target.id === "contact-us"){
+        loadMap()
+    }
+});

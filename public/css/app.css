@@ -1,3 +1,32 @@
+body,header,main,footer {
+  /* z-index: 2; */
+}
+#page-content {
+  height: 100%;
+  width: 100%;
+  z-index: 2;
+  margin: 8%;
+  position: relative;
+}
+
+#map {
+  height: 200px;
+}
+#background-overlay{
+  background-image: url("/images/jetrans-maps@4x-1.webp");
+  background-position: 50% 120px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+  background-color: #FFFFFF;
+  opacity: 0.15;
+  transition: background 0.3s, border-radius 0.3s, opacity 0.3s;
+}
 #customer-carousel {
     /* background-color: grey; */
     /* width: 80vw; */
