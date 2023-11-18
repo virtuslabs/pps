@@ -1,11 +1,21 @@
+:root {
+  --navbar-icon-height: 100px;
+  --navbar-icon-width: 120px;
+}
+
 body,header,main,footer {
-  /* z-index: 2; */
+  /* z-index: 1500; */
+  scroll-behavior: smooth
+}
+.navbar-brand img {
+  height: var(--navbar-icon-height);
+  width: var(--navbar-icon-width);
 }
 #page-content {
   height: 100%;
   width: 100%;
-  z-index: 2;
-  margin: 8%;
+  z-index: var(--bs-backdrop-zindex-1);
+  margin-top: calc(var(--navbar-icon-height)*1.5);
   position: relative;
 }
 
@@ -78,6 +88,9 @@ body,header,main,footer {
 .modal-dialog {
     height: 90%; /* = 90% of the .modal-backdrop block = %90 of the screen */
   }
-  .modal-content {
-    height: 100%; /* = 100% of the .modal-dialog block */
-  }
+.modal-content {
+  height: 100%; /* = 100% of the .modal-dialog block */
+}
+.modal-backdrop {
+  /* z-index: 1; */
+}
