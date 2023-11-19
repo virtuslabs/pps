@@ -80,6 +80,13 @@ window.onload = async () => {
     document.getElementById("copyright-year").innerText = currentYear.toString()
     getImageURLS()
 }
+htmx.on("htmx:beforeSend", function(evt) {
+    let path = window.location.pathname
+    console.log(path)
+    if(evt.target.id === "home" && path !== "/"){
+        return false
+    }
+})
 
 htmx.on("htmx:load", function(evt) {
     console.log(evt)
