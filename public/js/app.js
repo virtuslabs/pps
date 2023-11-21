@@ -1,4 +1,24 @@
 
+const bucketURL = "https://parlpetrolserv.nyc3.cdn.digitaloceanspaces.com"
+
+function populateCustomers(images){
+    let galleryCarousel = document.getElementById("customer-carousel")
+    let inner = galleryCarousel.querySelector("div")
+    for(let i=0;i<images.length;i++){
+        let carouselItem = document.createElement("div")
+        let carouselImage = document.createElement("img")
+        carouselImage.src = images[i]
+        carouselItem.classList.add("carousel-item")
+        carouselImage.classList.add("d-block")
+        carouselImage.classList.add("w-100")
+        carouselItem.appendChild(carouselImage)
+        if(i == 0){
+            carouselItem.classList.add("active")
+        }
+        inner.appendChild(carouselItem)
+    }
+    htmx.process(galleryCarousel)
+}
 function populateProjects(images){
     let gallery = document.getElementById("gallery")
     let galleryCarousel = document.getElementById("gallery-carousel")
@@ -57,28 +77,38 @@ function loadMap(){
     .setContent("Laurens, SC 29360")
     .openOn(map);
 }
-function getImageURLS(){
-    const bucketURL = "https://parlpetrolserv.nyc3.digitaloceanspaces.com"
-    fetch(bucketURL)
-    .then(res => res.text())
-    .then(str => new window.DOMParser().parseFromString(str, "text/xml"))
-    .then(xml => {
-        let imageURLS = []
-        let entries = xml.getElementsByTagName("Contents")
-        for(let i =0;i<entries.length;i++){
-            let imageName = entries[i].getElementsByTagName("Key")[0].textContent
-            let imageURL = `${bucketURL}/${imageName}`
-            imageURLS.push(imageURL)
-        }
-        console.log(imageURLS)
-    })
-
+function getImageURLS(key){
+    let items = localStorage.getItem(key)
+    if(items){
+        return new Promise((resolve, reject) => {
+            resolve(items.split(",").map(imageName => {return `${bucketURL}/${imageName}`}))
+        })
+    } else {
+        return fetch(bucketURL)
+        .then(res => res.text())
+        .then(str => new window.DOMParser().parseFromString(str, "text/xml"))
+        .then(xml => {
+            let imageURLS = []
+            let entries = xml.getElementsByTagName("Contents")
+            for(let i =0;i<entries.length;i++){
+                let imageName = entries[i].getElementsByTagName("Key")[0].textContent
+                let size = parseInt(entries[i].getElementsByTagName("Size")[0].textContent)
+                let imageURL = `${bucketURL}/${imageName}`
+                if (imageName.includes(key) && size > 1000){
+                    imageURLS.push(imageURL)
+                }
+            }
+            localStorage.setItem(key, imageURLS)
+            // console.log(imageURLS)
+            return imageURLS
+        })
+    }
 }
 // https://maps.google.com/maps?ll=34.501876,-82.016902&z=14&t=m&hl=en-US&gl=US&mapclient=embed&q=Laurens%20South%20Carolina%2029360
 window.onload = async () => {
     let currentYear = new Date().getFullYear()
     document.getElementById("copyright-year").innerText = currentYear.toString()
-    getImageURLS()
+    // getImageURLS()
 }
 htmx.on("htmx:beforeSend", function(evt) {
     let path = window.location.pathname
@@ -93,11 +123,13 @@ htmx.on("htmx:load", function(evt) {
     // let scrollPxToTop = evt.target.scroll
     window.scrollTo({ top: 0, behavior: 'smooth' })
     if (evt.target.id === "gallery-modal"){
-        loadProjects().then(images =>{
+        // loadProjects().then(images =>{
+        let key = "projects"
+        getImageURLS(key).then(images => {
             console.log(images)
             populateProjects(images)
         })
     } else if (evt.target.id === "contact-us"){
         loadMap()
     }
-});
+})
