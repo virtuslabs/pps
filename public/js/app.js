@@ -34,7 +34,7 @@ function populateProjects(images){
         imageElm.classList.add("img-fluid")
         imageElm.src = images[i]
         imageElm.setAttribute("data-bs-target", "#gallery-carousel")
-        imageElm.setAttribute("data-bs-slide", i)
+        imageElm.setAttribute("data-bs-slide-to", i)
         item.appendChild(imageElm)
         gallery.appendChild(item)
         let carouselItem = document.createElement("div")
