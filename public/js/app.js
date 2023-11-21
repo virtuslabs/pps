@@ -81,7 +81,7 @@ function getImageURLS(key){
     let items = localStorage.getItem(key)
     if(items){
         return new Promise((resolve, reject) => {
-            resolve(items.split(",").map(imageName => {return `${bucketURL}/${imageName}`}))
+            resolve(items.split(",").map(imageName => {return `${imageName}`}))
         })
     } else {
         return fetch(bucketURL)
