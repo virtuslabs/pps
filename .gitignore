@@ -9,7 +9,6 @@ js_old/
 pps_assets/
 notes
 dospace
-function/packages/pps/contact/contact.go
 function/.env
 contact_test.py
 .gitignore
