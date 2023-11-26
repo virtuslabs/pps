@@ -1,5 +1,6 @@
 
 const bucketURL = "https://parlpetrolserv.nyc3.cdn.digitaloceanspaces.com"
+const emailURL = "https://faas-nyc1-2ef2e6cc.doserverless.co/api/v1/web/fn-c050935f-c37b-4d8e-9147-0742507e06b1/sendgrid/pps-contact"
 
 function populateCustomers(images){
     let galleryCarousel = document.getElementById("customer-carousel")

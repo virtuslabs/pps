@@ -93,35 +93,60 @@
 <div class="container col-xxl-8 px-4 py-5">
     <div class="row align-items-center g-5 py-5">
         <div class="col-10 col-sm-8 col-lg-6">
-            <img src="images/20210225_185517-768x1024.jpg"
-                class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
+            <img src="images/20210225_185517-768x1024.jpg" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes"
+                width="700" height="500" loading="lazy">
         </div>
         <div class="col-lg-6">
             <h1 class="display-5 fw-bold lh-1 mb-3">
                 Whats Our Clients Said About Us</h1>
-            <p class="lead">Hi! I just wanted to express my profound thanks to the technician that helped me out at a Sunoco on Hwy 378/West Main Street in Lexington SC. My amp was blowing smoke and without question, he helped me out. I didn’t catch his name but I wanted to say thank you!!</p>
+            <p class="lead">Hi! I just wanted to express my profound thanks to the technician that helped me out at a
+                Sunoco on Hwy 378/West Main Street in Lexington SC. My amp was blowing smoke and without question, he
+                helped me out. I didn’t catch his name but I wanted to say thank you!!</p>
             <small>~ Amber Kesterson</small>
         </div>
     </div>
 </div>
+<div class="container col-xxl-8 px-4 py-5">
+    <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+        <h3 class="display-5 fw-bold lh-1 mb-3 text-center">Get a Quote</h3>
+        <form
+            hx-post="https://faas-nyc1-2ef2e6cc.doserverless.co/api/v1/web/fn-c050935f-c37b-4d8e-9147-0742507e06b1/pps/contact"
+            hx-ext="json-enc">
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Name:</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Name" name="name">
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Email:</label>
+                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Email" name="from">
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">Message:</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="content"></textarea>
+            </div>
+            <button class="float-end" type="submit">Send</button>
+        </form>
+    </div>
+</div>
+</div>
 <div id="customer-carousel" class="carousel slide">
     <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="..." class="d-block w-100" alt="...">
-      </div>
-      <div class="carousel-item">
-        <img src="..." class="d-block w-100" alt="...">
-      </div>
-      <div class="carousel-item">
-        <img src="..." class="d-block w-100" alt="...">
-      </div>
+        <div class="carousel-item active">
+            <img src="..." class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+            <img src="..." class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+            <img src="..." class="d-block w-100" alt="...">
+        </div>
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
     </button>
     <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
     </button>
-  </div>
+</div>

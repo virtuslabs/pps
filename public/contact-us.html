@@ -17,5 +17,23 @@
                 </ul>
             </div>
         </div>
+        <div class="row row-cols-1 mt-5">
+            <h3 class="text-center">Send us a message!</h3>
+            <form hx-post="https://faas-nyc1-2ef2e6cc.doserverless.co/api/v1/web/fn-c050935f-c37b-4d8e-9147-0742507e06b1/pps/contact" hx-ext="json-enc">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Name:</label>
+                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Name" name="name">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Email:</label>
+                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Email" name="from">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label">Message:</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="content"></textarea>
+                </div>
+                <button type="submit">Send</button>
+            </form>
+        </div>
     </div>
 </div>

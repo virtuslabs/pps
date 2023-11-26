@@ -1,0 +1,7 @@
+packages:
+    - name: pps
+      functions:
+        - name: contact
+          environment:
+            MAILGUN_API_KEY: "${MAILGUN_API_KEY}"
+          runtime: go:default
