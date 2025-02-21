@@ -106,29 +106,33 @@ function getImageURLS(key){
     }
 }
 // https://maps.google.com/maps?ll=34.501876,-82.016902&z=14&t=m&hl=en-US&gl=US&mapclient=embed&q=Laurens%20South%20Carolina%2029360
-window.onload = async () => {
+window.onload = () => {
     let currentYear = new Date().getFullYear()
     document.getElementById("copyright-year").innerText = currentYear.toString()
     // getImageURLS()
 }
 htmx.on("htmx:beforeSend", function(evt) {
     let path = window.location.pathname
-    console.log(path)
+    // console.log(path)
     if(evt.target.id === "home" && path !== "/"){
         return false
     }
 })
 
 htmx.on("htmx:load", function(evt) {
-    console.log(evt)
+    console.log(evt.target.id)
     // let scrollPxToTop = evt.target.scroll
     window.scrollTo({ top: 0, behavior: 'smooth' })
     if (evt.target.id === "gallery-modal"){
-        // loadProjects().then(images =>{
         let key = "projects"
         getImageURLS(key).then(images => {
-            console.log(images)
             populateProjects(images)
+        })
+    }
+    else if (evt.target.id === "customer-carousel"){
+        let key = "customers"
+        getImageURLS(key).then(images => {
+            populateCustomers(images)
         })
     } else if (evt.target.id === "contact-us"){
         loadMap()
